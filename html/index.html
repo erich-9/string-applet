@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>String Applet</title>
+
+    <meta charset="utf-8">
+
+    <link href="https://search.uni-bielefeld.de/cgi-bin/search.cgi" rel="search" type="text/html">
+    <link href="https://www.uni-bielefeld.de/help.html" rel="help" type="text/html">
+    <link href="https://www.uni-bielefeld.de/impressum.html" rel="license" type="text/html">
+    <link href="http://www.math.uni-bielefeld.de/sites/all/themes/mathematik/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://www.math.uni-bielefeld.de/birep/style/corporate.css" rel="stylesheet" type="text/css">
+    <link href="https://www.math.uni-bielefeld.de/birep/style/base.css" rel="stylesheet" type="text/css">
+
+    <style>
+      body {
+        overflow: hidden;
+      }
+
+      .overlay {
+        display: block;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      #spinner {
+        background: white url("img/spinner.svg") 50% 50% no-repeat;
+        z-index: 102;
+      }
+
+      #kopf {
+        background: #f8d42a;
+      }
+
+      #suche {
+        left: 755px;
+        width: 222px;
+      }
+
+      #fussmenu {
+        text-align: center;
+      }
+
+      #contentbereich, #fussmenu, #fussstrich {
+        top: 240px;
+        width: 977px;
+      }
+
+      .Button {
+        border: 1px solid #f8d42a;
+      }
+
+      ul.menu-left li, h1, h2, h3, #fussstrich {
+        border-bottom-color: #f8d42a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="spinner" class="overlay"></div>
+    <div id="overlay" class="overlay"></div>
+
+    <div id="logo">
+      <a href="https://www.uni-bielefeld.de/"><img alt="grünes Logo der Universität Bielefeld" height="72" src="https://www.math.uni-bielefeld.de/sites/all/themes/mathematik/images/logo.jpg" width="185"></a>
+    </div>
+
+    <div id="titel">
+      BIREP &mdash; Darstellungstheorie endlichdimensionaler Algebren
+    </div>
+
+    <div id="kopf"></div>
+
+    <div id="Kopfbild1">
+      <a href="/birep/headerinfo.php"><img alt="BIREP header picture 1" src="https://www.math.uni-bielefeld.de/birep/style/large/university.jpg" title="Bielefeld University, original picture by Drahreg01, used under CC BY-SA 3.0 licence"></a>
+    </div>
+
+    <div id="Kopfbild2"><img alt="BIREP header picture 2" src="https://www.math.uni-bielefeld.de/birep/style/small/0002.png"></div>
+
+    <div id="pulldown">
+      <ul class="pulldown">
+        <li>
+          <a href="https://www.math.uni-bielefeld.de/~jgeuenich/">Jan Geuenich</a>
+        </li>
+        <li>
+          <a href="https://www.math.uni-bielefeld.de/birep/index.php">BIREP</a>
+        </li>
+        <li>
+          <a href="https://www.math.uni-bielefeld.de/">Mathematik</a>
+        </li>
+        <li>
+          <a href="https://www.uni-bielefeld.de">Universität Bielefeld</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="suche">
+      <form accept-charset="ISO-8859-1, ISO-8859-2, UTF-8" action="http://search.uni-bielefeld.de/index.php" method="get">
+        <div>
+          <input class="Feld" name="q[0][c]" size="10" type="text" value=""> <input name="q[0][d]" type="hidden" value="all"> <input name="q[1][c]" type="hidden" value="www.math.uni-bielefeld.de"> <input name="q[1][d]" type="hidden" value="url"> &nbsp;<input class="Button" type="submit" value="Suchen">
+        </div>
+      </form>
+    </div>
+
+    <div id="contentbereich">
+      <p style="font-style: italic">
+        Feedback is welcome. Please let <a href="mailto:jgeuenich@math.uni-bielefeld.de">me</a> know if you encounter bugs or miscalculations.
+      </p>
+
+      <div id="editor">
+
+        <ul id="menu">
+          <li><div>Load</div>
+            <ul>
+              <li id="clear">
+                <div>Empty</div>
+              </li>
+              <li id="load-example">
+                <div>Example</div>
+                <ul id="examples"></ul>
+              </li>
+              <li id="load-from-cache">
+                <div>From Cache</div>
+                <ul id="cached"></ul>
+              </li>
+              <li id="load-from-file">
+                <div>
+                  <form id="load-from-file-form">
+                    <label for="local-file">From File</label>
+                    <input id="local-file" type="file" style="display: none" />
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li><div>Save</div>
+            <ul>
+              <li id="save-in-cache">
+                <div>In Cache</div>
+              </li>
+              <li id="save-as-file">
+                <div>As File</div>
+              </li>
+            </ul>
+          </li>
+          <li><div>Export</div>
+            <ul>
+              <li id="export-as-latex">
+                <div>As LaTeX</div>
+              </li>
+              <li id="export-as-pdf">
+                <div>As PDF</div>
+              </li>
+            </ul>
+          </li>
+          <li id="update">
+            <div>Update</div>
+          </li>
+        </ul>
+
+        <h1 class="main-title title">
+          <span id="title">Special Biserial Algebra</span>
+        </h1>
+
+        <div id="quiver-status-message" class="ui-corner-all ui-widget ui-widget-content">
+          <p></p>
+        </div>
+        <div id="quiver-editor" class="quiver-editor ui-corner-all ui-widget ui-widget-content" tabindex="0"></div>
+        <div id="relations-container" class="ui-corner-all ui-widget ui-widget-content">
+          <textarea id="relations" tabindex="1" autocomplete="off" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div id="tabs">
+
+        <ul>
+          <li id="general-info-tab"><a href="#general-info">General Information</a></li>
+          <li id="string-info-tab"><a href="#string-info">Strings</a></li>
+          <li id="silting-info-tab"><a href="#silting-info">&tau;-Tilting</a></li>
+          <li id="references-tab"><a href="#references">References</a></li>
+        </ul>
+
+        <div id="general-info" class="tab-content">
+          <h4 class="title">Dimensions</h4>
+          <div class="content">
+            <div id="dimension"></div>
+            <div id="global-dimension"></div>
+            <div id="finitistic-dimension"></div>
+            <div id="left-injective-dimension"></div>
+            <div id="right-injective-dimension"></div>
+            <div id="dominant-dimension"></div>
+            <div id="krull-gabriel-dimension"></div>
+            <div id="representation-dimension"></div>
+          </div>
+
+          <h4 class="title">Indecomposables</h4>
+          <div class="content">
+            <div id="no-indecomposables"></div>
+          </div>
+
+          <h4 class="title">Cartan Matrix</h4>
+          <div class="content">
+            <div id="cartan-matrix" style="display: inline-block"></div>
+            <div class="skip"></div>
+            <div id="cartan-matrix-determinant" style="display: inline-block"></div>
+            <div id="cartan-matrix-rank" style="display: inline-block; margin-left: 33px"></div>
+          </div>
+
+          <div class="if-gentle">
+            <h4 class="title">Avella-Alaminos&ndash;Gei&szlig; Invariant</h4>
+            <div class="content">
+              <div id="ag-invariant"></div>
+            </div>
+          </div>
+
+          <div class="if-self-injective">
+            <h4 class="title">Nakayama Permutation</h4>
+            <div class="content">
+              <div id="nakayama-permutation"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="string-info" class="tab-content">
+          <div class="ar-quiver-shown">
+            <h4 class="title"><span class="if-not-rep-finite">String Components of the </span>AR Quiver</h4>
+          </div>
+          <div class="if-not-rep-finite">
+            <button id="add-more-strings" class="show-more" accesskey="a"></button>
+          </div>
+          <div class="ar-quiver-shown">
+            <div class="content">
+              <div id="ar-quiver" class="module-quiver"></div>
+            </div>
+          </div>
+
+          <p class="instruction">
+            Click on a string to get more information.
+          </p>
+
+          <div class="if-not-string-algebra">
+            <h4 class="title">Biserial Projective-Injectives</h4>
+            <div class="content">
+              <div id="biserials"></div>
+            </div>
+          </div>
+
+          <h4 class="title"><span class="if-not-rep-finite">Elementary </span>Strings</h4>
+          <div class="content">
+            <div id="strings"></div>
+          </div>
+
+          <div class="if-not-rep-finite">
+            <h4 class="title">Elementary Cyclic Strings</h4>
+            <div class="content">
+              <div id="cyclic-strings"></div>
+            </div>
+          </div>
+
+          <div class="if-not-rep-finite">
+            <h4 class="title"><span class="if-not-domestic">Elementary </span>Bands</h4>
+            <div class="content">
+              <div id="bands"></div>
+            </div>
+          </div>
+
+          <div class="if-gentle">
+            <h4 class="title">Forbidden Cycles</h4>
+            <div class="content">
+              <div id="forbidden-cycles"></div>
+            </div>
+
+            <h4 class="title">Alternating Cycles</h4>
+            <div class="content">
+              <div id="alternating-cycles"></div>
+            </div>
+          </div>
+
+          <h4 class="title">String Quiver</h4>
+          <div class="content">
+            <div id="string-quiver" class="module-quiver"></div>
+          </div>
+
+          <div class="if-string-algebra if-rep-finite">
+            <h4 class="title"><span class="if-not-rep-finite">Reduced </span>Syzygy Quiver</h4>
+            <div class="content">
+              <div id="omega-quiver" class="module-quiver"></div>
+            </div>
+          </div>
+
+          <div class="if-domestic">
+            <div class="if-not-rep-finite">
+              <h4 class="title">Bridge Quiver</h4>
+              <div class="content">
+                <div id="bridge-quiver" class="module-quiver"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="silting-info" class="tab-content">
+          <p class="instruction">
+            To mutate, click on a summand.
+          </p>
+
+          <h4 class="title">&tau;-Rigid Part</h4>
+          <div class="content">
+            <div id="silting-tau-pos-rigid"></div>
+          </div>
+
+          <h4 class="title">Support Part</h4>
+          <div class="content">
+            <div id="silting-tau-pos-support"></div>
+          </div>
+
+          <h4 class="title">G-Matrix</h4>
+          <div class="content">
+            <div id="silting-g-matrix"></div>
+          </div>
+
+          <div class="if-rep-finite">
+            <h4 class="title">s&tau;-Tilting Quiver</h4>
+            <div class="content">
+              <div class="silting-quiver-not-shown">
+                <button id="show-silting-quiver" class="show-more">Show</button>
+              </div>
+              <div id="silting-quiver" class="module-quiver"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="references" class="tab-content">
+          <h4 class="title">Fact Collections</h4>
+          <div class="content">
+            <dl>
+              <dt>
+                <a href="http://www.iaz.uni-stuttgart.de/LstAGeoAlg/Kuelshammer/" target="_blank">Julian K&uuml;lshammer</a>'s page about <i>biserial algebras</i>
+              </dt>
+              <dd>
+                URL: <a href="http://www.iaz.uni-stuttgart.de/LstAGeoAlg/Kuelshammer/topics/biserial.html" target="_blank">http://www.iaz.uni-stuttgart.de/LstAGeoAlg/Kuelshammer/topics/biserial.html</a>
+              </dd>
+
+              <dt>
+                <a href="http://www.math.uni-bonn.de/people/schroer/" target="_blank">Jan Schr&ouml;er</a>'s <a href="http://www.math.uni-bonn.de/people/schroer/fd-atlas.html" target="_blank">FD-Atlas</a> entry on <i>biserial algebras</i>
+              </dt>
+              <dd>
+                URL: <a href="http://www.math.uni-bonn.de/people/schroer/fd-atlas-files/FD-BiserialAlgebras.pdf" target="_blank">http://www.math.uni-bonn.de/people/schroer/fd-atlas-files/FD-BiserialAlgebras.pdf</a>
+              </dd>
+
+              <dt>
+                Dimensions associated with finite-dimensional algebras
+              </dt>
+              <dd>
+                URL: <a href="http://www.math.uni-bonn.de/people/schroer/fd-dimensions.html" target="_blank">http://www.math.uni-bonn.de/people/schroer/fd-dimensions.html</a>
+              </dd>
+            </dl>
+          </div>
+
+          <h4 class="title">Articles</h4>
+          <div class="content">
+            <div id="article-list"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="save-in-cache-dialog" class="dialog" title="Save in Cache">
+        <div>
+          <label for="save-in-cache-name">Name</label>
+          <input type="text" id="save-in-cache-name" class="ui-widget-content ui-corner-all" spellcheck="false">
+        </div>
+      </div>
+
+      <div id="string-info-dialog" title="String Info">
+        <div class="content">
+          <div id="string"></div>
+        </div>
+
+        <h4 class="title">Positive AR Translate</h4>
+        <div class="content">
+          <div id="string-tau-pos"></div>
+        </div>
+
+        <h4 class="title">Negative AR Translate</h4>
+        <div class="content">
+          <div id="string-tau-neg"></div>
+        </div>
+
+        <h4 class="title">Direct AR Predecessors</h4>
+        <div class="content">
+          <div id="string-direct-preds"></div>
+        </div>
+
+        <h4 class="title">Direct AR Successors</h4>
+        <div class="content">
+          <div id="string-direct-succs"></div>
+        </div>
+
+        <h4 class="title">Positive Syzygy</h4>
+        <div class="content">
+          <div id="string-omega-pos"></div>
+        </div>
+
+        <h4 class="title">Negative Syzygy</h4>
+        <div class="content">
+          <div id="string-omega-neg"></div>
+        </div>
+      </div>
+
+      <div id="error-dialog">
+        <p id="error-message"></p>
+      </div>
+
+      <div id="show-silting-quiver-dialog" title="Show s&tau;-Tilting Quiver?">
+        The quiver may have many vertices.
+        <br />
+        <br />
+        Compute it anyway?
+      </div>
+
+    </div>
+
+    <div id="fussstrich"></div>
+
+    <div id="fussmenu">
+      <ul class="menu-foot">
+        <li>© 2017 Universität Bielefeld</li>
+        <li></li>
+        <li>
+          <a href="http://www.uni-bielefeld.de/(de)/Universitaet/Serviceangebot/Kontakt/index.html">Kontakt</a>
+        </li>
+        <li>
+          <a href="http://www.uni-bielefeld.de/(de)/Universitaet/impressum.html">impressum</a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      var head = document.getElementsByTagName("head")[0];
+
+      var sheets = [
+        "lib/jquery-ui/jquery-ui.min.css",
+        "styles.css"
+      ];
+
+      sheets.forEach(function(sheet) {
+        var link = document.createElement("link");
+
+        link.rel = "stylesheet";
+        link.href = sheet;
+
+        head.appendChild(link);
+      });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script src="bundle.js"></script>
+  </body>
+
+</html>

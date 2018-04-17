@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import argparse
+import pathlib
+import sys
+
+from pybtex.database.input.bibtex import Parser
+from backend import Backend
+from style import Style
+
+parser = Parser()
+style = Style(abbreviate_names = True)
+backend = Backend()
+
+
+if __name__ == '__main__':
+  p = argparse.ArgumentParser()
+  p.add_argument('bib_file', metavar='INPUT_FILE')
+  p.add_argument('html_file', metavar='OUTPUT_FILE')
+  args = p.parse_args()
+
+  bib_file = args.bib_file
+  html_file = args.html_file
+
+  if not pathlib.Path(bib_file).is_file():
+    print('File "' + bib_file + '" doesn\'t exist', file = sys.stderr)
+    exit(1)
+
+  data = parser.parse_file(bib_file)
+  formatted = style.format_bibliography(data)
+
+  backend.write_to_file(formatted, html_file)

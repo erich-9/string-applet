@@ -1,0 +1,330 @@
+body {
+  font-size: 14px;
+  overflow: hidden;
+}
+
+#overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 101;
+}
+
+#contentbereich {
+  display: inline-block;
+  font-family: sans-serif;
+  left: 0;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  text-align: center;
+}
+
+.ui-button {
+  font-family: sans-serif;
+}
+
+.ui-widget-content {
+  background-color: #fdfdfd;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.ui-widget-overlay {
+  background: black;
+  opacity: 0.4;
+}
+
+.title {
+  background: #fdfdfd;
+  border: 1px solid #b6c828;
+  color: #454545;
+  margin: 5px 0;
+}
+
+.main-title {
+  display: table;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  margin: 5px 2px 5px 2px;
+  padding: 15px;
+  width: 295px;
+}
+
+.main-title span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#editor {
+  float: left;
+  margin: 5px 15px 21px 0;
+  width: 330px;
+}
+
+.ui-menu-item-wrapper {
+  background: #f8d42a;
+  color: #454545;
+  font-weight: bold;
+}
+
+.ui-menu-item-wrapper.ui-state-active {
+  color: #333;
+  font-weight: bold;
+}
+
+#tabs {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  margin-left: 15px;
+/*   min-width: 500px; */
+  padding: 3px;
+}
+
+#menu, #quiver-editor, #relations-container, #quiver-status-message {
+  margin: 2px;
+}
+
+#quiver-status-message {
+  display: flex;
+  height: 32px;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+#quiver-status-message p {
+  font-size: 12px;
+  margin: auto;
+  white-space: pre-line;
+}
+
+.instruction {
+  display: inline-block;
+}
+
+#relations-container {
+  display: flex;
+}
+
+#menu li {
+  display: block;
+}
+
+#menu ul {
+  width: 222px;
+}
+
+#quiver-editor svg {
+  height: 326px;
+  vertical-align: top;
+}
+
+#relations {
+  background-color: transparent;
+  border-style: none;
+  flex: 1;
+  height: 50px;
+  margin: 0;
+  padding: 10px;
+  resize: none;
+}
+
+.dialog input {
+  margin: 4px;
+  outline: none;
+  width: 234px;
+}
+
+.tab-content {
+  flex-grow: 1;
+  margin: 0;
+  overflow: scroll;
+}
+
+.content {
+  margin: 15px 25px 25px 25px;
+}
+
+.content table {
+  margin: 0 auto;
+}
+
+.thready {
+  margin: 5px auto;
+}
+
+.stringy {
+  background-color: #f9f9f9;
+  border: 2px solid #aaa;
+  border-radius: 3px;
+  margin: 5px 15%;
+  overflow: hidden;
+  padding: 1px;
+  white-space: nowrap;
+}
+
+.stringy sup {
+  font-size: 8px;
+  vertical-align: top;
+}
+
+.string, .biserial {
+  cursor: pointer;
+}
+
+.tab-content .skip {
+  display: inline-block;
+  width: 30px;
+}
+
+.tab-content p {
+  margin: 0 auto;
+  max-width: 500px;
+  padding-bottom: 15px;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+.tab-content dl {
+  margin: 15px auto;
+  max-width: 666px;
+  text-align: left;
+}
+
+.tab-content dt {
+  margin-bottom: 5px;
+}
+
+.tab-content dd {
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+#paths table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: inline-block;
+  text-align: left;
+}
+
+#paths td {
+  padding: 0.2em 0.5em;
+}
+
+#refs-tab-content dd > span:nth-of-type(1) {
+  font-size: 14px;
+}
+
+#refs-tab-content dd > span:nth-of-type(2) {
+  display: inline-block;
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.show-more {
+  display: block;
+  margin: 15px auto;
+  width: 70%;
+}
+
+.how-to-go-on {
+  color: #aaa;
+}
+
+.projective {
+  background-color: rgba(170, 102, 102, 0.08);
+  border: 2px solid #a66;
+}
+
+.injective {
+  background-color: rgba(102, 170, 102, 0.08);
+  border: 2px solid #6a6;
+}
+
+.projective.injective {
+  background-color: rgba(102, 102, 170, 0.08);
+  border: 2px solid #66a;
+}
+
+.arr-space {
+  display: inline-block;
+  width: 0.85em;
+}
+
+.quiver-editor .vertices :hover circle {
+  fill: #e0ea95;
+}
+
+.quiver-editor .vertices .selected circle {
+  fill: #b6c828;
+}
+
+.quiver-editor .arrows {
+  cursor: pointer;
+}
+
+.quiver-editor .arrows :hover path,
+.quiver-editor .arrows .selected path {
+  stroke-width: 1.8px;
+}
+
+.quiver-editor .arrows :hover text,
+.quiver-editor .arrows .selected text {
+  font-weight: bold;
+}
+
+.module-quiver svg.quiver-view .arrows path {
+  stroke: #aaa;
+}
+
+.module-quiver svg.quiver-view .arrow-tip {
+  fill: #aaa;
+  stroke: #aaa;
+}
+
+.module-quiver svg.quiver-view .vertices circle {
+  fill: #aaa;
+  fill-opacity: 0.08;
+  stroke: #aaa;
+}
+
+.module-quiver svg.quiver-view .vertices .projective circle {
+  fill: #a66;
+  fill-opacity: 0.08;
+  stroke: #a66;
+}
+
+.module-quiver svg.quiver-view .vertices .injective circle {
+  fill: #6a6;
+  fill-opacity: 0.08;
+  stroke: #6a6;
+}
+
+.module-quiver svg.quiver-view .vertices .projective.injective circle {
+  fill: #66a;
+  fill-opacity: 0.08;
+  stroke: #66a;
+}
+
+.module-quiver svg.quiver-view {
+/*   height: auto; */
+/*   max-height: 300px; */
+  width: 100%;
+}
+
+.module-quiver svg.quiver-view .vertices .projective.extremal circle {
+  fill-opacity: 0.5;
+}
+
+.module-quiver svg.quiver-view .vertices .non-tilting.extremal circle {
+  fill: #aaa;
+  fill-opacity: 0.5;
+  stroke: #aaa;
+}
+
+.module-quiver svg.quiver-view .vertices .selected circle {
+  fill: orange !important;
+  fill-opacity: 0.3 !important;
+}

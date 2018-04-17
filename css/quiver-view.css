@@ -1,0 +1,50 @@
+svg.quiver-view {
+  overflow: hidden;
+  user-select: none;
+  width: auto;
+}
+
+svg.quiver-view .vertices {
+  cursor: pointer;
+}
+
+svg.quiver-view .vertices circle {
+  fill: none;
+  pointer-events: all;
+  stroke: #333;
+  stroke-width: 1.3px;
+}
+
+svg.quiver-view .vertices text {
+  fill: #333;
+  font: bold 12px sans-serif;
+  text-anchor: middle;
+}
+
+svg.quiver-view .arrows path {
+  fill: none;
+  stroke: #333;
+  stroke-width: 1.3px;
+}
+
+svg.quiver-view .arrow-tip {
+  fill: #333;
+  stroke: #333;
+  stroke-width: 1.3px;
+}
+
+svg.quiver-view .arrows text {
+  fill: #333;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+svg.quiver-view .arrows .trans path {
+  stroke: #aaa;
+  stroke-dasharray: 5,5;
+}
+
+svg.quiver-view .arrow-tip-trans {
+  fill: #aaa;
+  stroke: #aaa;
+}
