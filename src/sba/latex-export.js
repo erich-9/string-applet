@@ -15,7 +15,7 @@ function exportToLatex(infoView) {
     "\\usetikzlibrary{arrows.meta}",
     "\\allsectionsfont{\\centering}",
     `\\title{${infoView.title}}`,
-    `\\author{\\url{${document.URL}}}`,
+    `\\author{\\url{${document.URL.replace(/%/g, "\\%")}}}`,
     "\\date{\\today, \\currenttime}",
     "\\begin{document}",
     " \\maketitle",

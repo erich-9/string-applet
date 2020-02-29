@@ -24,7 +24,8 @@ const exampleMenu = $("#examples"),
   relationsTextArea = $("#relations");
 
 const infoView = new InfoView(),
-  quiverEditor = new QuiverEditor();
+  quiverEditor = new QuiverEditor(),
+  searchParams = new URLSearchParams(window.location.search);
 
 $.extend(quiverEditor.view.quiver, {
   vertexIdFunc: x => x + 1,
@@ -39,7 +40,17 @@ for (const key in Examples) {
 }
 
 $(() => {
-  loadExample(H.randomKey(Examples));
+  if (window.stringifiedSBA) {
+    quiverEditor.loadFromString(window.stringifiedSBA);
+  }
+  else {
+    let exampleKey = searchParams.get("example");
+
+    if (!(exampleKey in Examples))
+      exampleKey = H.randomKey(Examples);
+
+    loadExample(exampleKey);
+  }
 
   $("#quiver-editor");
   $("#article-list").load("./refs.html");
@@ -50,6 +61,7 @@ $(() => {
   $("#menu").menu();
 
   update();
+  hideSpinner();
 });
 
 function update() {
@@ -71,4 +83,9 @@ function update() {
 
 function loadExample(key) {
   quiverEditor.loadFromObject(Examples[key], key);
+}
+
+function hideSpinner() {
+  $("#spinner").hide();
+  $("body").css("overflow", "scroll");
 }

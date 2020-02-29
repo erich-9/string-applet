@@ -29,6 +29,41 @@ module.exports = {
     "relations": "ab ba"
   },
 
+  "2-Cycle with Loop": {
+    "quiver": {
+      "vertices": [
+        {
+          "id": 1,
+          "x": 150,
+          "y": 100
+        },
+        {
+          "id": 2,
+          "x": 150,
+          "y": 200
+        }
+      ],
+      "arrows": [
+        {
+          "id": "a",
+          "source": 1,
+          "target": 2
+        },
+        {
+          "id": "b",
+          "source": 2,
+          "target": 1
+        },
+        {
+          "id": "x",
+          "source": 1,
+          "target": 1
+        }
+      ]
+    },
+    "relations": "ab ba x^2"
+  },
+
   "A2": {
     "quiver": {
       "vertices": [

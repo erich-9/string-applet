@@ -23,7 +23,6 @@ const addMoreStringsButton = $("#add-more-strings").button(),
     resizable: false,
     width: 400
   }),
-  spinner = $("#spinner"),
   stringInfoDialog = $("#string-info-dialog").dialog({
     autoOpen: false,
     modal: true,
@@ -361,8 +360,6 @@ function InfoView() {
 
     if (that.A.isRepFinite())
       showARQuiver();
-
-    hideSpinner();
   }
 
   body.click(e => {
@@ -540,11 +537,6 @@ function InfoView() {
     );
   }
 
-  function hideSpinner() {
-    spinner.hide();
-    body.css("overflow", "scroll");
-  }
-
   function putArrayIntoContainer(x) {
     const z = x.value(that);
 
@@ -612,7 +604,7 @@ function InfoView() {
       form.appendChild($.extend(document.createElement("textarea"), x));
 
     $.extend(form, {
-      action: "http://latex.informatik.uni-halle.de/latex-online/latex.php",
+      action: "https://latex.informatik.uni-halle.de/latex-online/latex.php",
       method: "post",
       target: "_blank",
       style: "display: none"

@@ -9,7 +9,7 @@
     <link href="https://search.uni-bielefeld.de/cgi-bin/search.cgi" rel="search" type="text/html">
     <link href="https://www.uni-bielefeld.de/help.html" rel="help" type="text/html">
     <link href="https://www.uni-bielefeld.de/impressum.html" rel="license" type="text/html">
-    <link href="http://www.math.uni-bielefeld.de/sites/all/themes/mathematik/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://www.math.uni-bielefeld.de/sites/all/themes/mathematik/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://www.math.uni-bielefeld.de/birep/style/corporate.css" rel="stylesheet" type="text/css">
     <link href="https://www.math.uni-bielefeld.de/birep/style/base.css" rel="stylesheet" type="text/css">
 
@@ -98,7 +98,7 @@
     </div>
 
     <div id="suche">
-      <form accept-charset="ISO-8859-1, ISO-8859-2, UTF-8" action="http://search.uni-bielefeld.de/index.php" method="get">
+      <form action="https://search.uni-bielefeld.de/index.php" method="get">
         <div>
           <input class="Feld" name="q[0][c]" size="10" type="text" value=""> <input name="q[0][d]" type="hidden" value="all"> <input name="q[1][c]" type="hidden" value="www.math.uni-bielefeld.de"> <input name="q[1][d]" type="hidden" value="url"> &nbsp;<input class="Button" type="submit" value="Suchen">
         </div>
@@ -228,7 +228,7 @@
           <div class="ar-quiver-shown">
             <h4 class="title"><span class="if-not-rep-finite">String Components of the </span>AR Quiver</h4>
           </div>
-          <div class="if-not-rep-finite">
+          <div class="if-not-rep-finite" hidden>
             <button id="add-more-strings" class="show-more" accesskey="a"></button>
           </div>
           <div class="ar-quiver-shown">
@@ -321,7 +321,7 @@
             <div id="silting-g-matrix"></div>
           </div>
 
-          <div class="if-rep-finite">
+          <div class="if-rep-finite" hidden>
             <h4 class="title">s&tau;-Tilting Quiver</h4>
             <div class="content">
               <div class="silting-quiver-not-shown">
