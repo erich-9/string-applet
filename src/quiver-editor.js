@@ -31,6 +31,7 @@ function QuiverEditor(quiver) {
   const that = this;
 
   that.quiver = quiver ? quiver : new Quiver();
+  that.loadFromString = loadFromString;
   that.loadFromObject = loadFromObject;
 
   $("#clear").click(clear);
@@ -185,7 +186,12 @@ function QuiverEditor(quiver) {
   }
 
   function loadFromString(str, name = "") {
-    loadFromObject(JSON.parse(str), name);
+    try {
+      loadFromObject(JSON.parse(str), name);
+    }
+    catch (e) {
+      error("Parsing error", "Invalid JSON input received.");
+    }
   }
 
   function loadFromObject(obj, name = "") {
