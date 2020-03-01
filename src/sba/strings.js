@@ -141,7 +141,9 @@ function Strings(A) {
     }
 
     prepend(other) {
-      if (this.isTrivial && other.isTrivial)
+      if (this.isTrivial)
+        return other;
+      if (other.isTrivial)
         return this;
 
       return String.get(LH.flatten(LH.concat(...other.arg, ...this.arg)));
