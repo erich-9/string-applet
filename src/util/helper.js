@@ -1,6 +1,6 @@
-require("./array-extensions");
+import "./array-extensions";
 
-const $ = require("jquery");
+import $ from "jquery";
 
 function randomInt(from, to) {
   const n = (to - from);
@@ -117,7 +117,7 @@ function zeroMatrix(n, m) {
   return res;
 }
 
-module.exports = {
+export default {
   addCachedMethods,
   compare,
   lexComp,

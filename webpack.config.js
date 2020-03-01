@@ -1,12 +1,10 @@
 const npmBuildType = process.env.npm_lifecycle_event;
 
 const path = require("path");
-const webpack = require("webpack");
-
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
-  entry: ["babel-polyfill", "./index.js"],
+  entry: ["./index.js"],
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
@@ -22,27 +20,22 @@ module.exports = {
         use: "file-loader?name=img/[name].[ext]"
       },
       {
-        test: /\.(css|scss)$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            "css-loader?importLoaders=1",
-            "postcss-loader"
-          ]
-        })
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+        ],
       },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: [
-          "babel-loader?presets[]=env",
+          "babel-loader",
           "eslint-loader"
         ]
       }
-    ]
+    ],
   },
-  plugins: [
-    new ExtractTextPlugin("styles.css")
-  ],
   externals: {
     "mathjax": "MathJax"
   },
@@ -54,14 +47,23 @@ module.exports = {
 };
 
 if (npmBuildType === "build") {
-  module.exports.plugins = module.exports.plugins.concat([
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      }
-    })
-  ]);
+  module.exports = {
+    ...module.exports,
+    mode: "production",
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({}),
+      ]
+    }
+  };
 }
 else {
-  module.exports.devtool = "source-map";
+  module.exports = {
+    ...module.exports,
+    mode: "development",
+    devServer: {
+      contentBase: "./dist"
+    },
+    devtool: "inline-source-map"
+  }
 }

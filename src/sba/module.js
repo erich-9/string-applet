@@ -1,5 +1,5 @@
-const $ = require("jquery"),
-  H = require("../util/helper");
+import $ from "jquery";
+import H from "../util/helper";
 
 class Module {
   static compare(M, N) {
@@ -424,6 +424,7 @@ function homologicalDim(proj) {
 function _homologicalDim(omega, projinj) {
   const fd = this.A.finDim(), n = fd !== null ? fd : this.A.quiver.arrows.length;
 
+  // eslint-disable-next-line consistent-this
   for (let syz = this, d = 0; d <= n; ++d, syz = syz[omega]()) {
     if (syz[projinj]())
       return d;
@@ -444,4 +445,4 @@ function compare(A, x, y) {
   return A.BPI.compare(x, y);
 }
 
-module.exports = Module;
+export default Module;

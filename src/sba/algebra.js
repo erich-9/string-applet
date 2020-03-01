@@ -1,17 +1,17 @@
-require("../util/array-extensions");
+import "../util/array-extensions";
 
-const $ = require("jquery"),
-  Bands = require("./bands"),
-  Biserials = require("./biserials"),
-  H = require("../util/helper"),
-  Matrix = require("../util/matrix"),
-  Module = require("./module"),
-  LetterEnds = require("./letter-ends"),
-  Letters = require("./letters"),
-  Path = require("../quiver/path"),
-  Quiver = require("../quiver/quiver"),
-  Silter = require("./silter"),
-  Strings = require("./strings");
+import $ from "jquery";
+import Bands from "./bands";
+import Biserials from "./biserials";
+import H from "../util/helper";
+import Matrix from "../util/matrix";
+import Module from "./module";
+import LetterEnds from "./letter-ends";
+import Letters from "./letters";
+import Path from "../quiver/path";
+import Quiver from "../quiver/quiver";
+import Silter from "./silter";
+import Strings from "./strings";
 
 class SpecialBiserialAlgebra {
   constructor(quiver, relations) {
@@ -943,4 +943,4 @@ function extractSuccThread(ts, t, as, ev, ea) {
     return ts.findAndRemove(t_ => t_[ev] === v);
 }
 
-module.exports = SpecialBiserialAlgebra;
+export default SpecialBiserialAlgebra;

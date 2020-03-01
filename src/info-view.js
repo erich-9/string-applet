@@ -1,14 +1,14 @@
-require("jquery-ui/button");
-require("jquery-ui/dialog");
-require("jquery-ui/tabs");
+import "jquery-ui/button";
+import "jquery-ui/dialog";
+import "jquery-ui/tabs";
 
-const $ = require("jquery"),
-  FileSaver = require("file-saver"),
-  H = require("./util/helper"),
-  L = require("./sba/latex-export"),
-  P = require("./sba/print"),
-  MathJax = require("mathjax"),
-  Silter = require("./sba/silter");
+import $ from "jquery";
+import FileSaver from "file-saver";
+import H from "./util/helper";
+import L from "./sba/latex-export";
+import P from "./sba/print";
+import MathJax from "mathjax";
+import Silter from "./sba/silter";
 
 const addMoreStringsButton = $("#add-more-strings").button(),
   body = $("body"),
@@ -616,4 +616,4 @@ function InfoView() {
   });
 }
 
-module.exports = InfoView;
+export default InfoView;

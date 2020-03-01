@@ -1,4 +1,4 @@
-const H = require("../util/helper");
+import H from "../util/helper";
 
 const arrowsCompare = Array.compare((a1, a2) => H.compare(a1.id, a2.id));
 
@@ -101,4 +101,4 @@ class Path {
   }
 }
 
-module.exports = Path;
+export default Path;

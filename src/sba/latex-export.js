@@ -1,5 +1,5 @@
-const H = require("../util/helper"),
-  P = require("./print");
+import H from "../util/helper";
+import P from "./print";
 
 function exportToLatex(infoView) {
   const res = [
@@ -221,6 +221,6 @@ function tf(x) {
   return x.toFixed(3);
 }
 
-module.exports = {
+export default {
   exportToLatex
 };

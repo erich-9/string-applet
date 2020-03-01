@@ -1,6 +1,6 @@
-const $ = require("jquery"),
-  H = require("../util/helper"),
-  Module = require("./module");
+import $ from "jquery";
+import H from "../util/helper";
+import Module from "./module";
 
 function Biserials(A) {
   const instances = [],
@@ -154,4 +154,4 @@ function Biserials(A) {
   return Biserial;
 }
 
-module.exports = Biserials;
+export default Biserials;

@@ -1,6 +1,6 @@
-const $ = require("jquery"),
-  H = require("../util/helper"),
-  Path = require("../quiver/path");
+import $ from "jquery";
+import H from "../util/helper";
+import Path from "../quiver/path";
 
 function Letters(A) {
   const tdDir = [], tdDirExc = [], tdInv = [], tdInvExc = [];
@@ -133,4 +133,4 @@ function Letters(A) {
   return Letter;
 }
 
-module.exports = Letters;
+export default Letters;

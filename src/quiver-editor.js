@@ -1,7 +1,7 @@
-const $ = require("jquery"),
-  FileSaver = require("file-saver"),
-  Quiver = require("./quiver/quiver"),
-  QuiverView = require("./quiver/quiver-view");
+import $ from "jquery";
+import FileSaver from "file-saver";
+import Quiver from "./quiver/quiver";
+import QuiverView from "./quiver/quiver-view";
 
 const statusMessage = $("#quiver-status-message p"),
   quiverEditor = $("#quiver-editor"),
@@ -157,15 +157,6 @@ function QuiverEditor(quiver) {
       }
       break;
 
-    // case 76: /* 'L' */
-    //   if (!view.simulation)
-    //     view.layout();
-    //   break;
-
-    // case 70: /* 'F' */
-    //   view.toggleSimulation();
-    //   break;
-
     default:
       return;
     }
@@ -236,4 +227,4 @@ function error(title, str) {
   $("#error-dialog").dialog({ title, autoOpen: true });
 }
 
-module.exports = QuiverEditor;
+export default QuiverEditor;

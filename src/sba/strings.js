@@ -1,7 +1,7 @@
-const $ = require("jquery"),
-  H = require("../util/helper"),
-  LH = require("./letter-helper"),
-  Module = require("./module");
+import $ from "jquery";
+import H from "../util/helper";
+import LH from "./letter-helper";
+import Module from "./module";
 
 function Strings(A) {
   const instances = [], instancesNormalized = [],
@@ -757,4 +757,4 @@ function bnfcToHtml(x) {
   return res;
 }
 
-module.exports = Strings;
+export default Strings;

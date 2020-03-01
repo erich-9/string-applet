@@ -1,4 +1,4 @@
-const QuiverView = require("../quiver/quiver-view");
+import QuiverView from "../quiver/quiver-view";
 
 function agInvariantToLatex(x) {
   return `[${x.map(inv => `(${inv.n},${inv.m})`).join(",")}]`;
@@ -121,7 +121,7 @@ function wrapWithCount(x, count) {
   return count > 1 ? `${count} &times; (${x})` : x;
 }
 
-module.exports = {
+export default {
   agInvariantToLatex,
   alternatingCycleToHtml,
   arrayToHtml,

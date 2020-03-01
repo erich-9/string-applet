@@ -1,14 +1,14 @@
-require("jquery-ui/button");
-require("jquery-ui/dialog");
-require("jquery-ui/menu");
+import "jquery-ui/button";
+import "jquery-ui/dialog";
+import "jquery-ui/menu";
 
-const $ = require("jquery"),
-  Examples = require("./examples"),
-  H = require("./util/helper"),
-  InfoView = require("./info-view"),
-  QuiverEditor = require("./quiver-editor"),
-  Silter = require("./sba/silter"),
-  SpecialBiserialAlgebra = require("./sba/algebra");
+import $ from "jquery";
+import Examples from "./examples";
+import H from "./util/helper";
+import InfoView from "./info-view";
+import QuiverEditor from "./quiver-editor";
+import Silter from "./sba/silter";
+import SpecialBiserialAlgebra from "./sba/algebra";
 
 const exampleMenu = $("#examples"),
   errorDialog = $("#error-dialog").dialog({

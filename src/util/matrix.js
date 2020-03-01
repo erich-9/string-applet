@@ -1,4 +1,4 @@
-const H = require("./helper");
+import H from "./helper";
 
 class Rational {
   static equal(x, y) {
@@ -269,4 +269,4 @@ function gcd(m, n) {
   }
 }
 
-module.exports = Matrix;
+export default Matrix;

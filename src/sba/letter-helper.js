@@ -1,4 +1,4 @@
-require("../util/array-extensions");
+import "../util/array-extensions";
 
 function concat() {
   const res = [];
@@ -159,7 +159,7 @@ function subLetters(arg, i, j) {
   return arg.slice(i, j);
 }
 
-module.exports = {
+export default {
   concat,
   flatten,
   invert,

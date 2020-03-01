@@ -40,7 +40,7 @@
     "comma-spacing": ["warn", { "before": false, "after": true }],
     "comma-style": ["warn", "last"],
     "computed-property-spacing": ["warn", "never"],
-    "consistent-this": ["off", "that"],
+    "consistent-this": ["warn", "that"],
     "eol-last": ["warn", "always"],
     "func-call-spacing": ["warn", "never"],
     "indent": ["warn", 2],

@@ -1,9 +1,9 @@
-require("jquery-ui/tooltip");
+import "jquery-ui/tooltip";
 
-const $ = require("jquery"),
-  d3 = require("d3"),
-  dagre = require("dagre"),
-  H = require("../util/helper");
+import $ from "jquery";
+import * as d3 from "d3";
+import dagre from "dagre";
+import H from "../util/helper";
 
 const toHandle = [
   "initialized",
@@ -759,4 +759,4 @@ function centerAt(V, x, y, x_min, y_min, w, h) {
 
 // [<<] handle drags
 
-module.exports = QuiverView;
+export default QuiverView;

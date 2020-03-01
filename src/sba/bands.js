@@ -1,5 +1,5 @@
-const $ = require("jquery"),
-  H = require("../util/helper");
+import $ from "jquery";
+import H from "../util/helper";
 
 function Bands(A) {
   const instances = [[]], instancesNormalized = [[]],
@@ -170,4 +170,4 @@ function Bands(A) {
   return Band;
 }
 
-module.exports = Bands;
+export default Bands;

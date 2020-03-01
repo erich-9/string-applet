@@ -1,5 +1,5 @@
-const $ = require("jquery"),
-  H = require("../util/helper");
+import $ from "jquery";
+import H from "../util/helper";
 
 function LetterEnds(A) {
   const allInstances = [],
@@ -90,4 +90,4 @@ function LetterEnds(A) {
   return LetterEnd;
 }
 
-module.exports = LetterEnds;
+export default LetterEnds;

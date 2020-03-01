@@ -1,5 +1,5 @@
-const H = require("../util/helper"),
-  Module = require("./module");
+import H from "../util/helper";
+import Module from "./module";
 
 class Silter {
   static compare(S, T) {
@@ -105,4 +105,4 @@ function exchangePartner(M, P, N) {
   return null;
 }
 
-module.exports = Silter;
+export default Silter;

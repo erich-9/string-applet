@@ -1,8 +1,8 @@
-require("../util/array-extensions");
+import "../util/array-extensions";
 
-const $ = require("jquery"),
-  H = require("../util/helper"),
-  Path = require("./path");
+import $ from "jquery";
+import H from "../util/helper";
+import Path from "./path";
 
 function Quiver() {
   const that = this;
@@ -326,4 +326,4 @@ Quiver.clone = function(other) {
   return q;
 };
 
-module.exports = Quiver;
+export default Quiver;
