@@ -1,13 +1,15 @@
 const npmBuildType = process.env.npm_lifecycle_event;
 
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  entry: ["./index.js"],
+  entry: [
+    "./index.js",
+  ],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -31,7 +33,7 @@ module.exports = {
         exclude: /(node_modules)/,
         use: [
           "babel-loader",
-          "eslint-loader"
+          "eslint-loader",
         ]
       }
     ],
@@ -51,10 +53,20 @@ if (npmBuildType === "build") {
     ...module.exports,
     mode: "production",
     optimization: {
+      minimize: true,
       minimizer: [
-        new UglifyJsPlugin({}),
-      ]
-    }
+        new TerserPlugin(),
+      ],
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
+        },
+      },
+    },
   };
 }
 else {
@@ -65,5 +77,5 @@ else {
       contentBase: "./dist"
     },
     devtool: "inline-source-map"
-  }
+  };
 }
