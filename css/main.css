@@ -114,6 +114,10 @@ body {
   width: 222px;
 }
 
+#menu label {
+  cursor: pointer;
+}
+
 #quiver-editor svg {
   height: 326px;
   vertical-align: top;
