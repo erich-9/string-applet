@@ -40,11 +40,14 @@ function QuiverEditor(quiver) {
     const cached = $("#cached").empty();
 
     for (let i = 0, l = localStorage.length; i < l; ++i) {
-      const key = localStorage.key(i);
+      const m = /^string-applet\{(.*)\}$/.exec(localStorage.key(i));
+
+      if (m === null)
+        continue;
 
       cached.append(
-        $(`<li><div>${key}</div></li>`)
-          .click(() => loadFromString(localStorage.getItem(key), key))
+        $(`<li><div>${m[1]}</div></li>`)
+          .click(() => loadFromString(localStorage.getItem(m[0]), m[1]))
       );
     }
 
@@ -203,7 +206,7 @@ function QuiverEditor(quiver) {
   }
 
   function saveInCache(key) {
-    localStorage.setItem(key, stringified());
+    localStorage.setItem(`string-applet{${key}}`, stringified());
     that.name = key;
   }
 
